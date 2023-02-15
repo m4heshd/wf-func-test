@@ -1,0 +1,20 @@
+name: join-test
+
+on:
+  workflow_dispatch:
+
+env:
+  ELECTRON_VERSIONS: ${{ join(['16.0.0',
+                               '17.0.0',
+                               '18.0.0',
+                               '19.0.0',
+                               '20.0.0',
+                               '21.0.0',
+                               '22.0.0',
+                               '23.0.0'], ' -t ') }}
+                               
+jobs:
+  print-env:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ env.ELECTRON_VERSIONS }}
